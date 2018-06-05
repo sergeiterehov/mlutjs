@@ -1,0 +1,11 @@
+{
+  "name": "mlutjs",
+  "version": "1.0.0",
+  "description": "Матрица LUT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergei Terehov",
+  "license": "ISC"
+}
