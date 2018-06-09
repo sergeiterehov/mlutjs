@@ -9,7 +9,7 @@ struct point
 
 struct pga_table
 {
-    __uint64_t ** matrix;
+    __uint64_t * matrix;
 
     int width;
     int height;
@@ -17,7 +17,7 @@ struct pga_table
 
 struct pga_emulator
 {
-    unsigned char ** states;
+    unsigned char * states;
     struct pga_table * table;
 
     struct point * stack;
@@ -60,9 +60,85 @@ struct point * pga_emulator_stack_pop(struct pga_emulator * emulator)
     return &(emulator->stack[--emulator->stack_position]);
 }
 
-void pga_emulator_propagate(struct pga_emulator * emulator)
+int pga_emulator_propagate(struct pga_emulator * emulator)
 {
-    //
+    int interations = 0;
+
+    struct point * now;
+
+    int width = emulator->table->width;
+    int height = emulator->table->height;
+
+    __uint64_t * table = emulator->table->matrix;
+
+    int x;
+    int y;
+
+    __uint64_t lut;
+
+    unsigned char inputs;
+    unsigned char state;
+    unsigned char * stateCurrent;
+
+    while (emulator->stack_position > 0)
+    {
+        now = pga_emulator_stack_pop(emulator);
+
+        x = now->x;
+        y = now->y;
+
+        if (x == -1 || y == -1 || x == width || y == height)
+        {
+            continue;
+        }
+
+        lut = table[x, y];
+
+        x++;
+        y++;
+
+        inputs = (
+            0b0
+            | ( ((emulator->states[x, y - 1] >> 2) & 0b1) << 0 )
+            | ( ((emulator->states[x + 1, y] >> 3) & 0b1) << 1 )
+            | ( ((emulator->states[x, y + 1] >> 0) & 0b1) << 2 )
+            | ( ((emulator->states[x - 1, y] >> 1) & 0b1) << 3 )
+        );
+
+        state = ( (lut >> inputs) & 0b1111 );
+        stateCurrent = &(emulator->states[x, y]);
+
+        if (state == *stateCurrent)
+        {
+            continue;
+        }
+
+        *stateCurrent = state;
+
+        x--;
+        y--;
+
+        pga_emulator_stack_push(emulator, x, y - 1);
+        pga_emulator_stack_push(emulator, x + 1, y);
+        pga_emulator_stack_push(emulator, x, y + 1);
+        pga_emulator_stack_push(emulator, x - 1, y);
+
+        interations++;
+    }
+
+    return interations;
+}
+
+__uint64_t lut_train(unsigned char (*f)(unsigned char))
+{
+    __uint64_t lut = 0b0;
+
+    for (unsigned char inputs = 0b0; inputs <= 0b1111; inputs++)
+    {
+        lut |= f(inputs) << (inputs * 4);
+    }
+
+    return lut;
 }
 
 int main()
@@ -70,7 +146,18 @@ int main()
     struct pga_table * table = pga_table_create(3, 3);
     struct pga_emulator * emulator = pga_emulator_create(table);
 
-    pga_emulator_stack_push(emulator, 10, 20);
+    table->matrix[0, 0] = lut_train(({
+        unsigned char callback(unsigned char inputs)
+        {
+            return 0b1;
+        }
+
+        callback;
+    }));
+
+    pga_emulator_stack_push(emulator, 0, 0);
+
+    printf("Iterations: %i\n", pga_emulator_propagate(emulator));
 
     return 0;
 }
