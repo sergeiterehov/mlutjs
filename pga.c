@@ -141,22 +141,29 @@ __uint64_t lut_train(unsigned char (*f)(unsigned char))
     return lut;
 }
 
+__uint64_t lut_and(int a, int b, int f)
+{
+    __uint64_t result = 0b0;
+
+    for (int i = 0b0; i <= 0b1111; i++)
+    {
+        result |= (((i >> a) & 0b1) & ((i >> b) & 0b1)) << f;
+    }
+
+    return result;
+}
+
 int main()
 {
     struct pga_table * table = pga_table_create(3, 3);
     struct pga_emulator * emulator = pga_emulator_create(table);
 
-    table->matrix[0, 0] = lut_train(({
-        unsigned char callback(unsigned char inputs)
-        {
-            return 0b1;
-        }
-
-        callback;
-    }));
+    table->matrix[0, 0] = lut_and(0, 3, 1);
 
     pga_emulator_stack_push(emulator, 0, 0);
 
+    printf("LUT: %i\n", table->matrix[0, 0]);
+    // todo: Происходит какая то херня. По пьяне не понятно
     printf("Iterations: %i\n", pga_emulator_propagate(emulator));
 
     return 0;
