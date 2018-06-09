@@ -1,2 +1,2 @@
 build:
-	gcc pga.c -g -o pga
+	gcc pga.c -g -o pga.bin
