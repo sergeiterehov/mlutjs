@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "./luts.c"
 
 typedef __uint64_t uint64;
 typedef unsigned char byte;
@@ -17,31 +18,6 @@ void lut_train(uint64 * node, byte (* func)(byte, int[]), int args[])
     {
         *node |= (((uint64) func(inputs, args) & 0b1111) << (inputs << 2));
     }
-}
-
-byte lut_wire_function(byte inputs, int args[])
-{
-    return ((inputs >> args[0]) & 0b1) << args[1];
-}
-
-byte lut_not_function(byte inputs, int args[])
-{
-    return (~(inputs >> args[0]) & 0b1) << args[1];
-}
-
-byte lut_and_function(byte inputs, int args[])
-{
-    return (((inputs >> args[0]) & 0b1) & ((inputs >> args[1]) & 0b1)) << args[2];
-}
-
-byte lut_or_function(byte inputs, int args[])
-{
-    return (((inputs >> args[0]) & 0b1) | ((inputs >> args[1]) & 0b1)) << args[2];
-}
-
-byte lut_xor_function(byte inputs, int args[])
-{
-    return (((inputs >> args[0]) & 0b1) ^ ((inputs >> args[1]) & 0b1)) << args[2];
 }
 
 struct pga_table
@@ -195,17 +171,26 @@ int main()
     struct pga_table * table = pga_table_create(3, 3);
     struct pga_emulator * emulator = pga_emulator_create(table);
 
-    lut_train(&table->matrix[1][0], lut_wire_function, (int[2]) {NODE_UP, NODE_BOTTOM});
-    lut_train(&table->matrix[0][1], lut_wire_function, (int[2]) {NODE_LEFT, NODE_RIGHT});
-    lut_train(&table->matrix[1][1], lut_and_function, (int[3]) {NODE_UP, NODE_LEFT, NODE_RIGHT});
+    lut_train(&table->matrix[0][0], lut_wire_function, (int[2]) {NODE_LEFT, NODE_RIGHT});
+    lut_train(&table->matrix[0][2], lut_wire_function, (int[2]) {NODE_LEFT, NODE_RIGHT});
 
-    emulator->states[0][2] = 0b1111;
-    emulator->states[2][0] = 0b1111;
+    lut_train(&table->matrix[1][1], lut_wire_function, (int[2]) {NODE_UP, NODE_BOTTOM});
+    lut_train(&table->matrix[2][0], lut_wire_function, (int[2]) {NODE_BOTTOM, NODE_LEFT});
+    lut_train(&table->matrix[2][1], lut_wire_function, (int[2]) {NODE_BOTTOM, NODE_UP});
+    
+    lut_train(&table->matrix[2][2], lut_wire_function, (int[2]) {NODE_RIGHT, NODE_UP});
+    lut_train(&table->matrix[2][2], lut_wire_function, (int[2]) {NODE_RIGHT, NODE_RIGHT});
+
+    lut_train(&table->matrix[1][1], lut_nor_function, (int[3]) {NODE_LEFT, NODE_RIGHT, NODE_BOTTOM});
+    lut_train(&table->matrix[1][2], lut_nor_function, (int[3]) {NODE_LEFT, NODE_UP, NODE_RIGHT});
+
+    emulator->states[0][1] = 0b1111;
+    emulator->states[0][3] = 0b1111;
 
     emulator->stack[emulator->stack_pointer++] = 0;
-    emulator->stack[emulator->stack_pointer++] = 1;
+    emulator->stack[emulator->stack_pointer++] = 2;
 
-    emulator->stack[emulator->stack_pointer++] = 1;
+    emulator->stack[emulator->stack_pointer++] = 0;
     emulator->stack[emulator->stack_pointer++] = 0;
 
     int iterations = pga_emulator_render(emulator);
