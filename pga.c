@@ -74,6 +74,11 @@ struct pga_emulator * pga_emulator_create(struct pga_table * table)
 
     byte * states_array = malloc(width * height * sizeof(byte));
 
+    for (int i = 0; i < width * height; i++)
+    {
+        states_array[i] = 255;
+    }
+
     for (int x = 0; x < width; x++)
     {
         emulator->states[x] = &states_array[x * height];
@@ -178,14 +183,14 @@ int main()
     lut_train(&table->matrix[2][0], lut_wire_function, (int[2]) {NODE_BOTTOM, NODE_LEFT});
     lut_train(&table->matrix[2][1], lut_wire_function, (int[2]) {NODE_BOTTOM, NODE_UP});
     
-    lut_train(&table->matrix[2][2], lut_wire_function, (int[2]) {NODE_RIGHT, NODE_UP});
-    lut_train(&table->matrix[2][2], lut_wire_function, (int[2]) {NODE_RIGHT, NODE_RIGHT});
+    lut_train(&table->matrix[2][2], lut_wire_function, (int[2]) {NODE_LEFT, NODE_UP});
+    lut_train(&table->matrix[2][2], lut_wire_function, (int[2]) {NODE_LEFT, NODE_RIGHT});
 
-    lut_train(&table->matrix[1][1], lut_nor_function, (int[3]) {NODE_LEFT, NODE_RIGHT, NODE_BOTTOM});
+    lut_train(&table->matrix[1][0], lut_nor_function, (int[3]) {NODE_LEFT, NODE_RIGHT, NODE_BOTTOM});
     lut_train(&table->matrix[1][2], lut_nor_function, (int[3]) {NODE_LEFT, NODE_UP, NODE_RIGHT});
 
     emulator->states[0][1] = 0b1111;
-    emulator->states[0][3] = 0b1111;
+    emulator->states[0][3] = 0b0000;
 
     emulator->stack[emulator->stack_pointer++] = 0;
     emulator->stack[emulator->stack_pointer++] = 2;
@@ -196,7 +201,7 @@ int main()
     int iterations = pga_emulator_render(emulator);
 
     printf("Iterations: %i\n", iterations);
-    printf("State: %i\n", emulator->states[2][2]);
+    printf("State: %i\n", emulator->states[1 + 1][2 + 1]);
 
     return 0;
 }

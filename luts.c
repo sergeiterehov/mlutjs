@@ -27,5 +27,5 @@ byte lut_xor_function(byte inputs, int args[])
 
 byte lut_nor_function(byte inputs, int args[])
 {
-    return ~(((inputs >> args[0]) & 0b1) | ((inputs >> args[1]) & 0b1)) << args[2];
+    return (~(((inputs >> args[0]) & 0b1) | ((inputs >> args[1]) & 0b1)) & 0b1) << args[2];
 }
