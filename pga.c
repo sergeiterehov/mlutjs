@@ -171,6 +171,34 @@ int pga_emulator_render(struct pga_emulator * emulator)
     return iterations;
 }
 
+void pga_emulator_set(struct pga_emulator * emulator, int x, int y, byte direction, byte state)
+{
+    int ofx = 0;
+    int ofy = 0;
+
+    if (NODE_UP == direction)
+    {
+        ofy--;
+    }
+    else if (NODE_RIGHT == direction)
+    {
+        ofx++;
+    }
+    else if (NODE_BOTTOM == direction)
+    {
+        ofy++;
+    }
+    else if (NODE_LEFT == direction)
+    {
+        ofx--;
+    }
+
+    emulator->stack[emulator->stack_pointer++] = x;
+    emulator->stack[emulator->stack_pointer++] = y;
+
+    emulator->states[x + 1 + ofx][y + 1 + ofy] = 0b1 == state ? 0b1111 : 0b0000;
+}
+
 int main()
 {
     struct pga_table * table = pga_table_create(3, 3);
@@ -189,14 +217,8 @@ int main()
     lut_train(&table->matrix[1][0], lut_nor_function, (int[3]) {NODE_LEFT, NODE_RIGHT, NODE_BOTTOM});
     lut_train(&table->matrix[1][2], lut_nor_function, (int[3]) {NODE_LEFT, NODE_UP, NODE_RIGHT});
 
-    emulator->states[0][1] = 0b1111;
-    emulator->states[0][3] = 0b0000;
-
-    emulator->stack[emulator->stack_pointer++] = 0;
-    emulator->stack[emulator->stack_pointer++] = 2;
-
-    emulator->stack[emulator->stack_pointer++] = 0;
-    emulator->stack[emulator->stack_pointer++] = 0;
+    pga_emulator_set(emulator, 0, 0, NODE_LEFT, 1);
+    pga_emulator_set(emulator, 0, 2, NODE_LEFT, 0);
 
     int iterations = pga_emulator_render(emulator);
 
