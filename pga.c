@@ -112,19 +112,6 @@ struct pga_emulator * pga_emulator_create(struct pga_table * table)
     return emulator;
 }
 
-void debug_number_64(uint64 number)
-{
-    for (int i = 0; i < sizeof(number) * 8; i++)
-    {
-        printf("%i", (number >> i) & 0b1);
-
-        if (i % 4 == 3)
-        {
-            printf(" ");
-        }
-    }
-}
-
 int pga_emulator_render(struct pga_emulator * emulator)
 {
     int iterations = 0;
@@ -148,8 +135,8 @@ int pga_emulator_render(struct pga_emulator * emulator)
 
     while (sp > 0)
     {
-        x = stack[--sp];
         y = stack[--sp];
+        x = stack[--sp];
 
         if (x < 0 || y < 0 || x >= width || y >= height)
         {
@@ -172,10 +159,6 @@ int pga_emulator_render(struct pga_emulator * emulator)
         );
 
         state_new = (lut >> (inputs << 2)) & 0b1111;
-
-        printf("%i: \t", inputs);
-        debug_number_64(lut);
-        printf("\n");
 
         if (*state_current == state_new)
         {
@@ -212,8 +195,8 @@ int main()
     struct pga_table * table = pga_table_create(3, 3);
     struct pga_emulator * emulator = pga_emulator_create(table);
 
-    lut_train(&table->matrix[0][1], lut_wire_function, (int[2]) {NODE_UP, NODE_BOTTOM});
-    lut_train(&table->matrix[1][0], lut_wire_function, (int[2]) {NODE_LEFT, NODE_RIGHT});
+    lut_train(&table->matrix[1][0], lut_wire_function, (int[2]) {NODE_UP, NODE_BOTTOM});
+    lut_train(&table->matrix[0][1], lut_wire_function, (int[2]) {NODE_LEFT, NODE_RIGHT});
     lut_train(&table->matrix[1][1], lut_and_function, (int[3]) {NODE_UP, NODE_LEFT, NODE_RIGHT});
 
     emulator->states[0][2] = 0b1111;
