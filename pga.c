@@ -199,6 +199,11 @@ void pga_emulator_set(struct pga_emulator * emulator, int x, int y, byte directi
     emulator->states[x + 1 + ofx][y + 1 + ofy] = 0b1 == state ? 0b1111 : 0b0000;
 }
 
+byte pga_emulator_get(struct pga_emulator * emulator, int x, int y, byte direction)
+{
+    return 0b1 == (emulator->states[x + 1][y + 1] >> direction) & 0b1;
+}
+
 int main()
 {
     struct pga_table * table = pga_table_create(3, 3);
@@ -223,7 +228,7 @@ int main()
     int iterations = pga_emulator_render(emulator);
 
     printf("Iterations: %i\n", iterations);
-    printf("State: %i\n", emulator->states[1 + 1][2 + 1]);
+    printf("State: %i\n", pga_emulator_get(emulator, 2, 2, NODE_RIGHT));
 
     return 0;
 }
