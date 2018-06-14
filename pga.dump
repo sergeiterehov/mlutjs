@@ -1,4 +1,4 @@
-GAS LISTING /tmp/ccHswIXC.s 			page 1
+GAS LISTING /tmp/cc4jXWGh.s 			page 1
 
 
    1              		.file	"pga.c"
@@ -58,7 +58,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
   33 0030 8B45DC   		mov	eax, DWORD PTR [rbp-36]
   34 0033 4898     		cdqe
   35 0035 48C1E003 		sal	rax, 3
-GAS LISTING /tmp/ccHswIXC.s 			page 2
+GAS LISTING /tmp/cc4jXWGh.s 			page 2
 
 
   36 0039 4889C7   		mov	rdi, rax
@@ -118,7 +118,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
   30:././table.c   ****     return table;
   76              		.loc 1 30 0 is_stmt 1
   77 00a8 488B45F0 		mov	rax, QWORD PTR [rbp-16]
-GAS LISTING /tmp/ccHswIXC.s 			page 3
+GAS LISTING /tmp/cc4jXWGh.s 			page 3
 
 
   31:././table.c   **** }...
@@ -178,7 +178,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
   29:./emulator.c  ****     int width = table->width + 2;
  103              		.loc 2 29 0
  104 00c8 488B45C8 		mov	rax, QWORD PTR [rbp-56]
-GAS LISTING /tmp/ccHswIXC.s 			page 4
+GAS LISTING /tmp/cc4jXWGh.s 			page 4
 
 
  105 00cc 8B4008   		mov	eax, DWORD PTR [rax+8]
@@ -238,7 +238,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  144 0139 EB14     		jmp	.L6
  145              	.L7:
   42:./emulator.c  ****     {
-GAS LISTING /tmp/ccHswIXC.s 			page 5
+GAS LISTING /tmp/cc4jXWGh.s 			page 5
 
 
   43:./emulator.c  ****         states_array[i] = 255;
@@ -298,7 +298,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
   51:./emulator.c  ****     emulator->stack_pointer = 0;
  187              		.loc 2 51 0 is_stmt 1
  188 0199 488B45E8 		mov	rax, QWORD PTR [rbp-24]
-GAS LISTING /tmp/ccHswIXC.s 			page 6
+GAS LISTING /tmp/cc4jXWGh.s 			page 6
 
 
  189 019d C7402000 		mov	DWORD PTR [rax+32], 0
@@ -358,7 +358,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
   67:./emulator.c  **** 
   68:./emulator.c  ****     int * stack = emulator->stack;
  226              		.loc 2 68 0
-GAS LISTING /tmp/ccHswIXC.s 			page 7
+GAS LISTING /tmp/cc4jXWGh.s 			page 7
 
 
  227 01e1 488B45A8 		mov	rax, QWORD PTR [rbp-88]
@@ -418,7 +418,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  263 0246 4898     		cdqe
  264 0248 488D1485 		lea	rdx, [0+rax*4]
  264      00000000 
-GAS LISTING /tmp/ccHswIXC.s 			page 8
+GAS LISTING /tmp/cc4jXWGh.s 			page 8
 
 
  265 0250 488B45E0 		mov	rax, QWORD PTR [rbp-32]
@@ -478,7 +478,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
   96:./emulator.c  ****         state_current = &states[x][y];
  303              		.loc 2 96 0
  304 02bc 8B45D4   		mov	eax, DWORD PTR [rbp-44]
-GAS LISTING /tmp/ccHswIXC.s 			page 9
+GAS LISTING /tmp/cc4jXWGh.s 			page 9
 
 
  305 02bf 4898     		cdqe
@@ -538,7 +538,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  348              		.loc 2 102 0
  349 0341 8B45D4   		mov	eax, DWORD PTR [rbp-44]
  350 0344 4898     		cdqe
-GAS LISTING /tmp/ccHswIXC.s 			page 10
+GAS LISTING /tmp/cc4jXWGh.s 			page 10
 
 
  351 0346 488D14C5 		lea	rdx, [0+rax*8]
@@ -598,7 +598,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  396 03c5 3A45BF   		cmp	al, BYTE PTR [rbp-65]
  397 03c8 7505     		jne	.L15
  109:./emulator.c  ****         {
-GAS LISTING /tmp/ccHswIXC.s 			page 11
+GAS LISTING /tmp/cc4jXWGh.s 			page 11
 
 
  110:./emulator.c  ****             continue;
@@ -658,7 +658,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  435 042c 8955C4   		mov	DWORD PTR [rbp-60], edx
  436 042f 4898     		cdqe
  437 0431 488D1485 		lea	rdx, [0+rax*4]
-GAS LISTING /tmp/ccHswIXC.s 			page 12
+GAS LISTING /tmp/cc4jXWGh.s 			page 12
 
 
  437      00000000 
@@ -718,7 +718,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  481 04bf 4801D0   		add	rax, rdx
  482 04c2 8B55D4   		mov	edx, DWORD PTR [rbp-44]
  483 04c5 83EA01   		sub	edx, 1
-GAS LISTING /tmp/ccHswIXC.s 			page 13
+GAS LISTING /tmp/cc4jXWGh.s 			page 13
 
 
  484 04c8 8910     		mov	DWORD PTR [rax], edx
@@ -778,7 +778,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  527 0512 4489C2   		mov	edx, r8d
  528 0515 8845DC   		mov	BYTE PTR [rbp-36], al
  529 0518 8855D8   		mov	BYTE PTR [rbp-40], dl
-GAS LISTING /tmp/ccHswIXC.s 			page 14
+GAS LISTING /tmp/cc4jXWGh.s 			page 14
 
 
  140:./emulator.c  ****     int ofx = 0;
@@ -838,7 +838,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  561              		.loc 2 160 0
  562 0557 488B45E8 		mov	rax, QWORD PTR [rbp-24]
  563 055b 488B7018 		mov	rsi, QWORD PTR [rax+24]
-GAS LISTING /tmp/ccHswIXC.s 			page 15
+GAS LISTING /tmp/cc4jXWGh.s 			page 15
 
 
  564 055f 488B45E8 		mov	rax, QWORD PTR [rbp-24]
@@ -898,7 +898,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  613              		.loc 2 163 0 discriminator 4
  614 05e9 8810     		mov	BYTE PTR [rax], dl
  164:./emulator.c  **** }
-GAS LISTING /tmp/ccHswIXC.s 			page 16
+GAS LISTING /tmp/cc4jXWGh.s 			page 16
 
 
  615              		.loc 2 164 0 is_stmt 1 discriminator 4
@@ -958,7 +958,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  667              		.globl	lut_train
  669              	lut_train:
  670              	.LFB7:
-GAS LISTING /tmp/ccHswIXC.s 			page 17
+GAS LISTING /tmp/cc4jXWGh.s 			page 17
 
 
  671              		.file 3 "./luts.c"
@@ -1018,7 +1018,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  714              		.loc 3 7 0 is_stmt 0 discriminator 1
  715 06a3 807DFE0F 		cmp	BYTE PTR [rbp-2], 15
  716 06a7 76B7     		jbe	.L29
-GAS LISTING /tmp/ccHswIXC.s 			page 18
+GAS LISTING /tmp/cc4jXWGh.s 			page 18
 
 
  717              	.LBE5:
@@ -1078,7 +1078,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
   19:./luts.c      **** {
  766              		.loc 3 19 0
  767              		.cfi_startproc
-GAS LISTING /tmp/ccHswIXC.s 			page 19
+GAS LISTING /tmp/cc4jXWGh.s 			page 19
 
 
  768 06e0 55       		push	rbp
@@ -1138,7 +1138,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  818 0731 89D6     		mov	esi, edx
  819 0733 89C1     		mov	ecx, eax
  820 0735 D3FE     		sar	esi, cl
-GAS LISTING /tmp/ccHswIXC.s 			page 20
+GAS LISTING /tmp/cc4jXWGh.s 			page 20
 
 
  821 0737 0FB655FC 		movzx	edx, BYTE PTR [rbp-4]
@@ -1198,7 +1198,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  872 0795 09F0     		or	eax, esi
  873 0797 83E001   		and	eax, 1
  874 079a 89C2     		mov	edx, eax
-GAS LISTING /tmp/ccHswIXC.s 			page 21
+GAS LISTING /tmp/cc4jXWGh.s 			page 21
 
 
  875 079c 488B45F0 		mov	rax, QWORD PTR [rbp-16]
@@ -1258,7 +1258,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  925              		.loc 3 36 0
  926 07f6 5D       		pop	rbp
  927              		.cfi_def_cfa 7, 8
-GAS LISTING /tmp/ccHswIXC.s 			page 22
+GAS LISTING /tmp/cc4jXWGh.s 			page 22
 
 
  928 07f7 C3       		ret
@@ -1318,7 +1318,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  980 0000 49746572 		.string	"Iterations: %i\n"
  980      6174696F 
  980      6E733A20 
-GAS LISTING /tmp/ccHswIXC.s 			page 23
+GAS LISTING /tmp/cc4jXWGh.s 			page 23
 
 
  980      25690A00 
@@ -1378,7 +1378,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  1012      FFFF0300 
  1012      0000
  1013 0898 C78564FF 		mov	DWORD PTR [rbp-156], 1
-GAS LISTING /tmp/ccHswIXC.s 			page 24
+GAS LISTING /tmp/cc4jXWGh.s 			page 24
 
 
  1013      FFFF0100 
@@ -1438,7 +1438,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
   14:pga.c         ****     lut_train(&table->matrix[2][0], lut_wire_function, (int[2]) {NODE_BOTTOM, NODE_LEFT});
  1046              		.loc 4 14 0
  1047 0936 C7459002 		mov	DWORD PTR [rbp-112], 2
-GAS LISTING /tmp/ccHswIXC.s 			page 25
+GAS LISTING /tmp/cc4jXWGh.s 			page 25
 
 
  1047      000000
@@ -1498,7 +1498,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  1083              		.loc 4 18 0
  1084 09d4 C745C003 		mov	DWORD PTR [rbp-64], 3
  1084      000000
-GAS LISTING /tmp/ccHswIXC.s 			page 26
+GAS LISTING /tmp/cc4jXWGh.s 			page 26
 
 
  1085 09db C745C401 		mov	DWORD PTR [rbp-60], 1
@@ -1558,7 +1558,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  1121 0a7b E8000000 		call	lut_train
  1121      00
   22:pga.c         **** 
-GAS LISTING /tmp/ccHswIXC.s 			page 27
+GAS LISTING /tmp/cc4jXWGh.s 			page 27
 
 
   23:pga.c         ****     pga_emulator_set(emulator, 0, 0, NODE_LEFT, 1);
@@ -1618,7 +1618,7 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  1150 0af4 488B8558 		mov	rax, QWORD PTR [rbp-168]
  1150      FFFFFF
  1151 0afb B9010000 		mov	ecx, 1
-GAS LISTING /tmp/ccHswIXC.s 			page 28
+GAS LISTING /tmp/cc4jXWGh.s 			page 28
 
 
  1151      00
@@ -1659,24 +1659,24 @@ GAS LISTING /tmp/ccHswIXC.s 			page 1
  1173              	.LFE14:
  1175              	.Letext0:
  1176              		.file 5 "/usr/include/x86_64-linux-gnu/bits/types.h"
-GAS LISTING /tmp/ccHswIXC.s 			page 29
+GAS LISTING /tmp/cc4jXWGh.s 			page 29
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 pga.c
-     /tmp/ccHswIXC.s:7      .text:0000000000000000 pga_table_create
-     /tmp/ccHswIXC.s:87     .text:00000000000000ae pga_emulator_create
-     /tmp/ccHswIXC.s:209    .text:00000000000001c4 pga_emulator_render
-     /tmp/ccHswIXC.s:514    .text:0000000000000502 pga_emulator_set
-     /tmp/ccHswIXC.s:625    .text:00000000000005ee pga_emulator_get
-     /tmp/ccHswIXC.s:669    .text:0000000000000642 lut_train
-     /tmp/ccHswIXC.s:728    .text:00000000000006ac lut_wire_function
-     /tmp/ccHswIXC.s:764    .text:00000000000006e0 lut_not_function
-     /tmp/ccHswIXC.s:802    .text:000000000000071a lut_and_function
-     /tmp/ccHswIXC.s:846    .text:0000000000000764 lut_or_function
-     /tmp/ccHswIXC.s:890    .text:00000000000007ae lut_xor_function
-     /tmp/ccHswIXC.s:934    .text:00000000000007f8 lut_nor_function
-     /tmp/ccHswIXC.s:986    .text:0000000000000848 main
+     /tmp/cc4jXWGh.s:7      .text:0000000000000000 pga_table_create
+     /tmp/cc4jXWGh.s:87     .text:00000000000000ae pga_emulator_create
+     /tmp/cc4jXWGh.s:209    .text:00000000000001c4 pga_emulator_render
+     /tmp/cc4jXWGh.s:514    .text:0000000000000502 pga_emulator_set
+     /tmp/cc4jXWGh.s:625    .text:00000000000005ee pga_emulator_get
+     /tmp/cc4jXWGh.s:669    .text:0000000000000642 lut_train
+     /tmp/cc4jXWGh.s:728    .text:00000000000006ac lut_wire_function
+     /tmp/cc4jXWGh.s:764    .text:00000000000006e0 lut_not_function
+     /tmp/cc4jXWGh.s:802    .text:000000000000071a lut_and_function
+     /tmp/cc4jXWGh.s:846    .text:0000000000000764 lut_or_function
+     /tmp/cc4jXWGh.s:890    .text:00000000000007ae lut_xor_function
+     /tmp/cc4jXWGh.s:934    .text:00000000000007f8 lut_nor_function
+     /tmp/cc4jXWGh.s:986    .text:0000000000000848 main
 
 UNDEFINED SYMBOLS
 malloc
